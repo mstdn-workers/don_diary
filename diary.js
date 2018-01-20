@@ -38,5 +38,6 @@ class Diary {
   }
   appendStatus(status) {
     this.elem.appendChild(Diary.getElementFromStatus(status));
+    this.maintainInputArea();
   }
 }
