@@ -1,5 +1,9 @@
 function isEditableNode_(node) {
-  return node.nodeType == Node.TEXT_NODE || node.tagName == 'BR';
+  if (node.tagName == 'BR') return true;
+  if (node.nodeType == Node.TEXT_NODE) {
+    return node.wholeText.trim() != '';
+  }
+  return false;
 }
 
 class Diary {
@@ -22,7 +26,8 @@ class Diary {
   maintainInputArea() {
     var firstNode = this.elem.childNodes[0];
     if (!isEditableNode_(firstNode)) {
-      firstNode.insertAdjacentHTML('beforebegin', "<br>");
+      var br = document.createElement("br");
+      this.elem.insertBefore(br, firstNode);
     }
     for (let node of this.elem.querySelectorAll(".status")) {
       var nextNode = node.nextSibling;
