@@ -1,0 +1,7 @@
+article.status {
+  background: #282c37;
+  color: white;
+}
+.status__content p:last-child {
+  margin-bottom: 0;
+}
