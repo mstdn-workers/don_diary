@@ -10,7 +10,7 @@ class Diary {
   constructor(diary_element) {
     this.elem = diary_element;
   }
-  static getElementFromStatus(status) {
+  static createElementFromStatus(status) {
     var status_article = document.createElement("article");
     status_article.classList.add('status');
     status_article.classList.add('status_content');
@@ -37,7 +37,7 @@ class Diary {
     }
   }
   appendStatus(status) {
-    this.elem.appendChild(Diary.getElementFromStatus(status));
+    this.elem.appendChild(Diary.createElementFromStatus(status));
     this.maintainInputArea();
   }
 }
