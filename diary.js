@@ -36,6 +36,8 @@ class Diary {
     return status_article;
   }
   maintainInputArea() {
+    // この処理内でarticleを追加すると
+    // 無限ループを引き起こす可能性がある
     var firstNode = this.elem.childNodes[0];
     if (!isEditableNode_(firstNode)) {
       var br = document.createElement("br");
