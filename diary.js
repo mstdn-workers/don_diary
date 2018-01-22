@@ -9,6 +9,17 @@ function isEditableNode_(node) {
 class Diary {
   constructor(diary_element) {
     this.elem = diary_element;
+    let observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        // when article element(s) inserted
+        if (Array.from(mutation.addedNodes.values()).some(
+          (e) => e.tagName == 'ARTICLE')) {
+          this.maintainInputArea();
+        }
+      });
+    });
+    const config = {childList: true};
+    observer.observe(this.elem, config);
   }
   static createElementFromStatus(status) {
     var status_article = document.createElement("article");
@@ -39,6 +50,5 @@ class Diary {
   }
   appendStatus(status) {
     this.elem.appendChild(Diary.createElementFromStatus(status));
-    this.maintainInputArea();
   }
 }
