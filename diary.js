@@ -14,6 +14,7 @@ class Diary {
     var status_article = document.createElement("article");
     status_article.classList.add('status');
     status_article.classList.add('status_content');
+    status_article.setAttribute('contenteditable', false);
     var content = document.createElement("div");
     content.classList.add('status__content');
     content.insertAdjacentHTML(
